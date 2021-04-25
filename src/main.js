@@ -7,6 +7,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from './util/request'
+import * as echarts from "echarts"
+Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 Vue.use(ElementUI);
 Vue.config.productionTip = false

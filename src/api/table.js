@@ -2,7 +2,7 @@ import request from '@/util/request'
 
 export function testGetData(query) {
     return request({
-        url: '/test/getData',
+        url: '/getData',
         method: 'get',
         params: query
     })
@@ -10,7 +10,7 @@ export function testGetData(query) {
 
 export function testPostData(data) {
     return request({
-        url: '/test/getData',
+        url: '/postData',
         method: 'post',
         data
     })

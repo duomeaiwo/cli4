@@ -1,7 +1,7 @@
 <template>
     <div class="layout_index">
-        <!-- <el-button @click="jumpto('/table/index')" type="primary">table</el-button> -->
-        <!-- <el-button @click="jumpto('/')" type="primary">homepage</el-button> -->
+        <el-button @click="jumpto('/table/index')" type="primary">table</el-button>
+        <el-button @click="jumpto('/')" type="primary">homepage</el-button>
         <nav-bar></nav-bar>
         <app-main></app-main>
     </div>

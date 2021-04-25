@@ -6,7 +6,21 @@
 
 <script>
 export default {
-    
+    name: 'Dashboard',
+    data() {
+        return {
+            
+        }
+    },
+    created() {
+        
+    },
+    mounted() {
+        
+    },
+    methods: {
+        
+    },
 }
 </script>
 

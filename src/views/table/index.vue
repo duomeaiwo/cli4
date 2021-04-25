@@ -13,6 +13,7 @@
 <script>
 import { testGetData, testPostData } from '@/api/table'
 export default {
+    name: 'Table',
     data() {
         return {}
     },
@@ -30,7 +31,8 @@ export default {
         }
     },
     created() {
- 
+        console.log(process)
+        console.log(process.env)
     },
 }
 </script>
