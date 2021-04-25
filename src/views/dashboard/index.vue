@@ -2,7 +2,8 @@
     <div class="dashboard">
         dashboard
         <el-button @click="add()">add</el-button>
-        <line-chart :params="params" class="charts"></line-chart>
+        <pie-chart :params="params" class="chartsWrap"></pie-chart>
+        <line-chart :params="params" class="chartsWrap"></line-chart>
     </div>
 </template>
 
@@ -37,9 +38,10 @@ export default {
         width: 100%;
         height: 100%;
         border: 1px solid #000;
-        .charts {
+        .chartsWrap {
             width: 100%;
             height: 500px;
+            margin-bottom: 10px;
         }
     }
 </style>

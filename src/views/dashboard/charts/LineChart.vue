@@ -2,7 +2,7 @@
     <div class="chartsLine">
         <!-- <div class="text">{{ params.rate }}</div> -->
         <!-- <div class="text">{{ params.msg }}</div> -->
-        <div id="chart" class="chart"></div>
+        <div id="chartsLine" class="chart"></div>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         initChart() {
-            var myChart = this.$echarts.init(document.getElementById('chart'))
+            var myChart = this.$echarts.init(document.getElementById('chartsLine'))
             myChart.setOption(
                 {
                     xAxis: {
