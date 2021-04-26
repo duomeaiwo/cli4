@@ -5,7 +5,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+        Microsoft YaHei, Arial, sans-serif;
 }
 
 label {
@@ -28,7 +29,13 @@ html {
     }
 }
 
-html,body {
+html,
+body {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+div {
+    box-sizing: border-box;
 }

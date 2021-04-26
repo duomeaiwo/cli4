@@ -31,8 +31,6 @@ export default {
         }
     },
     created() {
-        console.log(process)
-        console.log(process.env)
     },
 }
 </script>

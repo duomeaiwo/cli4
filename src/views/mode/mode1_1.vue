@@ -1,12 +1,12 @@
 <template>
-    <div class="dashboard">
-        
+    <div class="mode1_1">
+        mode1_1
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Dashboard',
+    name: 'Mode1_1',
     data() {
         return {}
     },
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
-.dashboard {
+.mode1_1 {
     height: 100%;
 }
 </style>
