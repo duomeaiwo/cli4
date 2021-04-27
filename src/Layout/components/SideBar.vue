@@ -2,7 +2,7 @@
     <div class="sideBar">
         <el-scrollbar>
             <el-menu
-                default-active="/homepage/index"
+                :default-active="$route.path"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
@@ -32,7 +32,9 @@ export default {
     },
     created() {
         this.router = this.$router.options.routes
-        // console.log(this.router)
+    },
+    computed: {
+        
     },
     mounted() {},
     methods: {

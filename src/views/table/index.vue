@@ -39,6 +39,6 @@ export default {
 @import '@/style/variables.scss';
 .table_view {
     height: 200px;
-    width: 500px;
+    width: 100%;
 }
 </style>

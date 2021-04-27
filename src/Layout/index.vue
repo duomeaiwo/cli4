@@ -24,6 +24,8 @@ export default {
             this.$router.push(val)
         }
     },
+    created() {
+    },
 }
 </script>
 

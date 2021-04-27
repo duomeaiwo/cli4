@@ -1,22 +1,27 @@
 <template>
     <div class="sideItems" v-if="!item.hidden">
-        <!-- <el-submenu index="/mode">
-            <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Mode</span>
-            </template>
-            <el-menu-item index="/mode/mode1-1">mode1-1</el-menu-item>
-            <el-menu-item index="/mode/mode1-2">mode1-2</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="/table/index">
-            <i class="el-icon-menu"></i>
-            <span slot="title">table</span>
-        </el-menu-item> -->
-        <!-- <el-menu-item index="/homepage/index">
-            <i class="el-icon-document"></i>
-            <span slot="title">dashboard</span>
-        </el-menu-item> -->
-        <div style="height:20px">{{item.path}}</div>
+
+        <template v-if="hasOnlyOneChild(item, item.children)">
+            <el-menu-item :index="item.redirect">
+                <i :class="item.meta.icon"></i>
+                <span slot="title">{{ item.meta.title }}</span>
+            </el-menu-item>
+        </template>
+
+        <template v-if="!hasOnlyOneChild(item, item.children)">
+            <el-submenu :index="item.path">
+                <template slot="title">
+                    <i :class="item.meta.icon"></i>
+                    <span>{{ item.meta.title }}</span>
+                </template>
+                <el-menu-item
+                    v-for="x in item.children"
+                    :key="x.path"
+                    :index="item.path + '/' + x.path"
+                    >{{ x.meta.title }}</el-menu-item
+                >
+            </el-submenu>
+        </template>
     </div>
 </template>
 
@@ -27,14 +32,22 @@ export default {
         return {}
     },
     props: {
-        item: {}
+        item: {},
     },
     created() {
-        console.log('x')
         console.log(this.item)
+
     },
     mounted() {},
-    methods: {},
+    methods: {
+        hasOnlyOneChild(item, child) {
+            if (child.length > 1) {
+                return false
+            } else {
+                return true
+            }
+        },
+    },
 }
 </script>
 

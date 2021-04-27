@@ -23,42 +23,45 @@ const routes = [
     {
         path: '/homepage',
         component: Layout,
+        redirect: '/homepage/index',
+        meta: { title: 'Dashboard', icon: 'el-icon-menu' },
         children: [
             {
                 path: 'index',
                 component: () => import('@/views/dashboard/index'),
                 name: 'Dashboard',
-                meta: { title: 'Dashboard', icon: 'dashboard' },
             },
         ],
     },
     {
         path: '/table',
         component: Layout,
+        redirect: '/table/index',
+        meta: { title: 'Table', icon: 'el-icon-document' },
         children: [
             {
                 path: 'index',
                 component: () => import('@/views/table/index'),
                 name: 'Table',
-                meta: { title: 'Table', icon: 'dashboard2' },
             },
         ],
     },
     {
         path: '/mode',
         component: Layout,
+        meta: { title: 'Mode', icon: 'el-icon-location' },
         children: [
             {
                 path: 'mode1-1',
                 component: () => import('@/views/mode/mode1_1'),
                 name: 'Mode1-1',
-                meta: { title: 'Mode1-1', icon: 'dashboard3' },
+                meta: { title: 'Mode1-1', icon: 'el-icon-location' },
             },
             {
                 path: 'mode1-2',
                 component: () => import('@/views/mode/mode1_2'),
                 name: 'Mode1-2',
-                meta: { title: 'Mode1-2', icon: 'dashboard4' },
+                meta: { title: 'Mode1-2', icon: 'el-icon-location' },
             },
         ],
     }
