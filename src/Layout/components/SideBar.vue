@@ -11,7 +11,7 @@
                 active-text-color="#ffd04b"
                 router
             >
-                <side-items v-for="route in router" :key="route.path" :item='route'></side-items>
+                <side-items v-for="route in router" :key="route.path" :item="route"></side-items>
             </el-menu>
         </el-scrollbar>
     </div>
@@ -20,22 +20,20 @@
 <script>
 import SideItems from './SideItems'
 export default {
-  components: { SideItems },
+    components: { SideItems },
     name: 'SideBar',
     comments: {
-        SideItems
+        SideItems,
     },
     data() {
         return {
-            router: []
+            router: [],
         }
     },
     created() {
         this.router = this.$router.options.routes
     },
-    computed: {
-        
-    },
+    computed: {},
     mounted() {},
     methods: {
         handleOpen(key, keyPath) {
@@ -59,15 +57,17 @@ export default {
     height: 100%;
     ul {
         height: 100%;
-        .el-submenu__title, .el-menu-item {
+        .el-submenu__title,
+        .el-menu-item {
             text-align: left;
             margin-left: 10px;
-            color: $iconGrey ;
+            color: $iconGrey;
         }
     }
 }
-.el-scrollbar__view ul .el-submenu__title, .el-scrollbar__view ul .el-menu-item {
-    margin-left: 0
+.el-scrollbar__view ul .el-submenu__title,
+.el-scrollbar__view ul .el-menu-item {
+    margin-left: 0;
 }
 </style>
 <style lang="scss" scoped>

@@ -1,6 +1,5 @@
 <template>
     <div class="sideItems" v-if="!item.hidden">
-
         <template v-if="hasOnlyOneChild(item, item.children)">
             <el-menu-item :index="item.redirect">
                 <i :class="item.meta.icon"></i>
@@ -14,12 +13,7 @@
                     <i :class="item.meta.icon"></i>
                     <span>{{ item.meta.title }}</span>
                 </template>
-                <el-menu-item
-                    v-for="x in item.children"
-                    :key="x.path"
-                    :index="item.path + '/' + x.path"
-                    >{{ x.meta.title }}</el-menu-item
-                >
+                <el-menu-item v-for="x in item.children" :key="x.path" :index="item.path + '/' + x.path">{{ x.meta.title }}</el-menu-item>
             </el-submenu>
         </template>
     </div>
@@ -34,10 +28,7 @@ export default {
     props: {
         item: {},
     },
-    created() {
-        console.log(this.item)
-
-    },
+    created() {},
     mounted() {},
     methods: {
         hasOnlyOneChild(item, child) {
