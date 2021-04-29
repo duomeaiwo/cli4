@@ -47,24 +47,27 @@ export default {
 </script>
 <style lang="scss">
 @import '@/style/variables.scss';
-.el-scrollbar {
-    height: 100%;
-}
-.el-scrollbar__wrap {
-    overflow-x: hidden;
-}
-.el-scrollbar__view {
-    height: 100%;
-    ul {
+.sideBar {
+    .el-scrollbar {
         height: 100%;
-        .el-submenu__title,
-        .el-menu-item {
-            text-align: left;
-            margin-left: 10px;
-            color: $iconGrey;
+    }
+    .el-scrollbar__wrap {
+        overflow-x: hidden;
+    }
+    .el-scrollbar__view {
+        height: 100%;
+        ul {
+            height: 100%;
+            .el-submenu__title,
+            .el-menu-item {
+                text-align: left;
+                margin-left: 10px;
+                color: $iconGrey;
+            }
         }
     }
 }
+
 .el-scrollbar__view ul .el-submenu__title,
 .el-scrollbar__view ul .el-menu-item {
     margin-left: 0;
@@ -75,6 +78,5 @@ export default {
 .sideBar {
     width: 100%;
     height: 100%;
-    border: 1px solid #000;
 }
 </style>

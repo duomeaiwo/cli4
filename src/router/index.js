@@ -8,17 +8,17 @@ const routes = [
     {
         path: '*',
         redirect: '/404',
-        hidden: true
+        hidden: true,
     },
     {
         path: '/404',
         component: () => import('@/views/404'),
-        hidden: true
+        hidden: true,
     },
     {
         path: '/',
         redirect: '/homepage/index',
-        hidden: true
+        hidden: true,
     },
     {
         path: '/homepage',
@@ -66,7 +66,7 @@ const routes = [
                 meta: { title: 'Mode1-2', icon: 'el-icon-location' },
             },
         ],
-    }
+    },
 ]
 
 const router = new VueRouter({

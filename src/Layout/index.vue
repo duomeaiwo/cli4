@@ -34,6 +34,7 @@ export default {
 @import '@/style/variables.scss';
 .layout_index {
     position: relative;
+    height: 100%;
     .side_container {
         width: 210px !important;
         height: 100%;

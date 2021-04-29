@@ -44,7 +44,6 @@ export default {
         async queryNum() {
             let res = await this.doubleNum(30)
             let res2 = await this.tribleNum(res)
-            console.log(res2);
         },
     },
     created() {

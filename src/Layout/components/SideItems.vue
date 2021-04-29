@@ -13,7 +13,12 @@
                     <i :class="item.meta.icon"></i>
                     <span>{{ item.meta.title }}</span>
                 </template>
-                <el-menu-item v-for="x in item.children" :key="x.path" :index="item.path + '/' + x.path">{{ x.meta.title }}</el-menu-item>
+                <el-menu-item
+                    v-for="x in item.children"
+                    :key="x.path"
+                    :index="item.path + '/' + x.path"
+                    >{{ x.meta.title }}</el-menu-item
+                >
             </el-submenu>
         </template>
     </div>

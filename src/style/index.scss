@@ -5,8 +5,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
-        Microsoft YaHei, Arial, sans-serif;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial,
+        sans-serif;
 }
 
 label {
@@ -38,4 +38,12 @@ body {
 
 div {
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #eaecf1;
+    border-radius: 3px;
 }

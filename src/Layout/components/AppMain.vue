@@ -13,5 +13,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
     .appmain {
+        padding: 20px;
     }
 </style>

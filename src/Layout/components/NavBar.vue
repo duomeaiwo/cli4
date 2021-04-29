@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <el-breadcrumb class="bottom_bread" separator="/">
-            <el-breadcrumb-item v-for="(item,index) in breadList" :key="index">
+            <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">
                 <span>
                     <router-link :to="item.path">{{ item.meta.title }}</router-link>
                 </span>
@@ -16,29 +16,27 @@ export default {
     name: 'NavBar',
     data() {
         return {
-            breadList: [],
+            breadList: [{ path: '/homepage/index', meta: { title: 'Dashboard' } }],
         }
     },
     watch: {
         $route(route) {
-            console.log(route)
-            this.getBreadList()
+            this.getBreadList(route)
         },
     },
     created() {
-        this.getBreadList()
+        this.getBreadList(this.$route)
     },
     methods: {
-        getBreadList() {
-            let arr = []
-            let temp = []
-            temp.push(this.$route)
-            arr.unshift({path: "/homepage/index",meta: {title: 'Dashboard'}})
-            temp.filter((val) => {
-                return val.path != "/homepage/index"
+        getBreadList(route) {
+            this.breadList = [{ path: '/homepage/index', meta: { title: 'Dashboard' } }]
+            let flag = true
+            this.breadList.forEach(e => {
+                if(e.path == route.path) {
+                    flag = false
+                }
             })
-            this.breadList = arr.concat(temp)
-console.log(this.breadList);
+            flag ? this.breadList.push(route) : ''
         },
     },
 }
@@ -48,7 +46,13 @@ console.log(this.breadList);
 @import '@/style/variables.scss';
 .navbar {
     width: 100%;
-    border: 1px solid #000;
     height: 50px;
+    padding: 0 10px;
+    box-shadow: 0 1px 2px rgba(128,128,128, .1);
+
+    .bottom_bread {
+        height: 50px;
+        line-height: 50px;
+    }
 }
 </style>
