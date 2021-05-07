@@ -49,6 +49,8 @@ export default {
     created() {
         this.queryNum()
     },
+    mounted() {
+    },
 }
 </script>
 

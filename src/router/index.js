@@ -51,7 +51,7 @@ const routes = [
     {
         path: '/mode',
         component: Layout,
-        meta: { title: 'Mode', icon: 'el-icon-location' },
+        meta: { title: 'Mode', icon: 'el-icon-dish' },
         children: [
             {
                 path: 'mode1-1',

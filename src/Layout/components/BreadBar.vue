@@ -1,9 +1,9 @@
 <template>
-    <div class="breadBar" >
-        <!-- <el-scrollbar> -->
+    <div class="breadBar" ref="scrollBox">
+        <el-scrollbar ref="scrollContainer" :vertical="false" @wheel.native.prevent="handleScroll">
             <el-tag
                 class="tag"
-                v-for="(item,index) in routesList"
+                v-for="(item, index) in routesList"
                 :key="index"
                 :closable="computeClosable(item.path)"
                 @click="jumpTo(item.path)"
@@ -11,7 +11,7 @@
                 :effect="isActive(item.path)"
                 >{{ item.meta.title }}</el-tag
             >
-        <!-- </el-scrollbar> -->
+        </el-scrollbar>
     </div>
 </template>
 
@@ -27,126 +27,6 @@ export default {
                         title: 'Dashboard',
                     },
                 },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
-                {
-                    path: '/homepage/index',
-                    meta: {
-                        title: 'Dashboard',
-                    },
-                },
             ],
         }
     },
@@ -155,15 +35,13 @@ export default {
             this.computeRoutes(route)
         },
     },
+    computed: {
+        scrollWrapper() {
+            return this.$refs.scrollContainer.$refs.wrap
+        },
+    },
     created() {
         this.computeRoutes(this.$route)
-    },
-    mounted() {
-        // document.getElementsByClassName('breadBar').addEventListener('scroll',this.handleScroll())
-        // window.addEventListener('scroll',this.handleScroll())
-    },
-    destroyed() {
-        // document.getElementsByClassName('breadBar').removeEventListener('scroll',this.handleScroll())
     },
     methods: {
         isActive(path) {
@@ -198,9 +76,16 @@ export default {
                 }
             })
         },
-        handleScroll() {
-            console.log('xxx')
-        }
+        handleScroll(e) {
+            const eventDelta = e.wheelDelta || -e.deltaY * 40
+            const $scrollWrapper = this.scrollWrapper
+            // el-scrollbar的$refs属性可以拿到外层wrap的dom
+            // console.log(this.$refs.scrollContainer)
+            // console.log($scrollWrapper)
+            console.log($scrollWrapper.scrollLeft)
+            console.log(eventDelta)
+            $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4
+        },
     },
 }
 </script>
@@ -214,6 +99,8 @@ export default {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     overflow: scroll;
     overflow-x: hidden;
+    overflow-y: hidden;
+
     white-space: nowrap;
     .tag {
         margin: 5px 10px;
