@@ -37,7 +37,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
     (response) => {
         const res = response.data
-        if (res.code !== 20000) {
+        if (res.code == 20000) {
             // 登出判断
         } else {
             return res

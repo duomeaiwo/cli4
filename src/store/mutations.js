@@ -8,10 +8,8 @@ const mutations = {
     saveUserInfo(state, name) {
         state.username = name
     },
-    setToken(state, token) {
-        state.token = token
-        localStorage.setItem('token', state.token)
-    },
-    
+    setToken(state, v) {
+        state.token = v
+    }
 }
 export default mutations

@@ -6,7 +6,6 @@
                     <router-link :to="item.path">{{ item.meta.title }}</router-link>
                 </span>
             </el-breadcrumb-item>
-            <!-- <el-breadcrumb-item>活动详情</el-breadcrumb-item> -->
         </el-breadcrumb>
     </div>
 </template>
