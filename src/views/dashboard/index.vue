@@ -1,7 +1,6 @@
 <template>
     <div class="dashboard">
-        dashboard
-        <el-button @click="add()">add</el-button>
+        <el-button @click="add()">transfer data to child components</el-button>
         <pie-chart :params="params" class="chartsWrap"></pie-chart>
         <line-chart :params="params" class="chartsWrap"></line-chart>
     </div>

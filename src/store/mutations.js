@@ -10,6 +10,12 @@ const mutations = {
     },
     setToken(state, v) {
         state.token = v
+    },
+    setAvatar(state, v) {
+        state.avatar = v
+    },
+    setUsername(state, v) {
+        state.username = v
     }
 }
 export default mutations

@@ -1,6 +1,8 @@
 // 所有异步操作，需要更改到state中数据时
-import { login, logout } from '@/api/user'
+import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/util/auth'
+import { Message } from 'element-ui'
+import state from './state'
 const actions = {
     login({ commit }, userInfo) {
         const { username, password } = userInfo
@@ -20,16 +22,21 @@ const actions = {
             setTimeout(() => {
                 console.log('获取到登录返回的token')
                 const resToekn = 'Response-Token'
+                const avatarSrc =
+                    'https://mixkit.imgix.net/art/preview/mixkit-i-love-you-hand-gesture-419-original-large.png?q=80&auto=format%2Ccompress'
+                const username = userInfo.username.trim()
+                commit('setUsername', username)
+                commit('setAvatar', avatarSrc)
                 commit('setToken', resToekn)
                 setToken(resToekn)
                 resolve('200')
             }, 500)
         })
     },
-    logOut({ commit }, userInfo) {
+    logout({ commit }, userInfo) {
         return new Promise((resolve, reject) => {
             // logout(userInfo).then(res => {
-            this.$message.info('退出登录')
+            Message.info('退出登录')
             commit('setToken', '')
             removeToken()
             resolve()
@@ -37,6 +44,18 @@ const actions = {
             //     reject(err)
             //     this.$message.error('退出登录')
             // })
+        })
+    },
+    getInfo({ commit }, token) {
+        return new Promise((resolve, reject) => {
+            // getInfo(token).then(res => {
+            const avatarSrc =
+                'https://mixkit.imgix.net/art/preview/mixkit-i-love-you-hand-gesture-419-original-large.png?q=80&auto=format%2Ccompress'
+            const username = 'response_name'
+            commit('setUsername', username)
+            commit('setAvatar', avatarSrc)
+            // })
+            resolve()
         })
     },
 }

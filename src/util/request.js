@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
+import { getToken } from '@/util/auth'
+import store from '@/store'
 
 const request = axios.create({
     baseURL: process.env.VUE_APP_BASE_API,
@@ -7,23 +9,24 @@ const request = axios.create({
 })
 request.interceptors.request.use(
     (config) => {
-        //   if (store.getters.token) {
-        //     // let each request carry token
-        //     // ['X-Token'] is a custom headers key
-        //     // please modify it according to the actual situation
-        //     config.headers['X-Token'] = getToken()
-        //   }
+        if (store.getters.token) {
+            // let each request carry token
+            // ['X-Token'] is a custom headers key
+            // please modify it according to the actual situation
+            console.log(config)
+            config.headers.common['X-Token'] = getToken()
+        }
         // 添加请求头，请求添加时间戳
-        if(config.method == 'get') {
-            config.params =  {
+        if (config.method == 'get') {
+            config.params = {
                 ...config.params,
-                _t: Date.parse(new Date()) / 1000
+                _t: Date.parse(new Date()) / 1000,
             }
         }
-        if(config.method == 'post') {
-            config.data =  {
+        if (config.method == 'post') {
+            config.data = {
                 ...config.data,
-                _t: Date.parse(new Date()) / 1000
+                _t: Date.parse(new Date()) / 1000,
             }
         }
         return config

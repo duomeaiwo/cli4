@@ -8,10 +8,15 @@
                 </el-input>
             </el-form-item>
             <el-form-item prop="password">
-                <!-- <el-input ref="pwd" class="inputStyle" v-model="loginForm.password" type="password">
+                <el-input ref="pwd" class="inputStyle" v-model="loginForm.password" :type="passwordType">
                     <el-icon slot="prepend" class="el-icon-lock"></el-icon>
-                    <span class="icon iconfont icon-eye" slot="append"></span>
-                </el-input> -->
+                    <span
+                        class="icon iconfont"
+                        :class="passwordType == 'password' ? 'icon-eye' : 'icon-eye-close'"
+                        slot="append"
+                        @click="toggleShow()"
+                    ></span>
+                </el-input>
             </el-form-item>
             <el-form-item>
                 <el-button :loading="loading" class="inputStyle" type="primary" @click="handleLogin()">Login</el-button>
@@ -45,6 +50,7 @@ export default {
                 password: '',
             },
             loading: false,
+            passwordType: 'password',
             loginRules: {
                 username: [
                     {
@@ -65,7 +71,13 @@ export default {
     },
     computed: {},
     created() {},
-    mounted() {},
+    mounted() {
+        if (this.loginForm.username === '') {
+            this.$refs.username.focus()
+        } else if (this.loginForm.password === '') {
+            this.$refs.password.focus()
+        }
+    },
     methods: {
         handleLogin() {
             this.$refs['loginForm'].validate(async (valid) => {
@@ -86,6 +98,16 @@ export default {
                 }
             })
         },
+        toggleShow() {
+            if (this.passwordType === 'password') {
+                this.passwordType = ''
+            } else {
+                this.passwordType = 'password'
+            }
+            this.$nextTick(() => {
+                this.$refs.pwd.focus()
+            })
+        },
     },
 }
 </script>
@@ -98,19 +120,19 @@ export default {
         margin: 0 auto;
         .el-form-item {
             background: rgba(0, 0, 0, 0.1);
-            height: 47px;
             .el-form-item__content {
                 height: 100%;
+                overflow: hidden;
             }
         }
-        .el-form-item:nth-child(3), .el-form-item:nth-child(2) {
+        .el-form-item:nth-child(3),
+        .el-form-item:nth-child(2) {
             .el-form-item__content {
                 border: 2px solid #505050;
             }
         }
         .el-input {
-            background: #263140;
-            height: 47px;
+            height: 40px;
             // 解决chrome中input自动填充后颜色不一致问题
             input {
                 &:-webkit-autofill {
@@ -120,13 +142,14 @@ export default {
             }
         }
         .el-input__inner {
-            background: transparent;
+            background: #263140;
             height: 47px;
             color: #fff;
             border: none;
-            width: 90%;
+            border-radius: 0;
         }
-        .el-input-group__prepend {
+        .el-input-group__prepend,
+        .el-input-group__append {
             background: #263140;
             border: none;
         }

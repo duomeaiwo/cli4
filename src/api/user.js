@@ -15,3 +15,11 @@ export function logout(data) {
         data
     })
 }
+
+export function getInfo(token) {
+    return request({
+        url: '/getInfo',
+        method: 'get',
+        token
+    })
+}

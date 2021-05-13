@@ -1,9 +1,10 @@
 const state = {
     count: 0,
-    username: 'admin',
-    gender: 'male',
+    username: '',
+    gender: '',
     age: 0,
-    department: '01',
-    token: ''
+    department: '',
+    token: '',
+    avatar: ''
 }
 export default state
