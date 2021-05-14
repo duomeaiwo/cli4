@@ -1,14 +1,16 @@
 <template>
-    <div class="sideBar">
+    <div class="sideBar" :class="{ hideSideBar: !sideBarOpen }">
         <el-scrollbar>
             <el-menu
                 :default-active="$route.path"
-                class="el-menu-vertical-demo"
+                class="el-menu-vertical"
                 @open="handleOpen"
                 @close="handleClose"
                 background-color="#545c64"
                 text-color="#fff"
                 active-text-color="#ffd04b"
+                :collapse="!sideBarOpen"
+                :collapse-transition="false"
                 router
             >
                 <side-items v-for="route in router" :key="route.path" :item="route"></side-items>
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import SideItems from './SideItems'
 export default {
     components: { SideItems },
@@ -33,7 +36,10 @@ export default {
     created() {
         this.router = this.$router.options.routes
     },
-    computed: {},
+    computed: {
+        ...mapState(['sideBarOpen']),
+    },
+    watch: {},
     mounted() {},
     methods: {
         handleOpen(key, keyPath) {
@@ -61,10 +67,12 @@ export default {
             .el-submenu__title,
             .el-menu-item {
                 text-align: left;
-                margin-left: 10px;
                 color: $iconGrey;
             }
         }
+    }
+    .horizontal-collapse-transition {
+        transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
 }
 
@@ -76,7 +84,18 @@ export default {
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
 .sideBar {
-    width: 100%;
     height: 100%;
+    width: 210px;
+    /deep/ .el-menu {
+        li i {
+            margin-right: 30px;
+        }
+    }
+}
+.sideBar.hideSideBar {
+    width: 64px;
+    /deep/.el-submenu__icon-arrow {
+        display: none;
+    }
 }
 </style>

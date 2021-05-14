@@ -5,7 +5,22 @@
             <el-table-column label="name"></el-table-column>
             <el-table-column label="gender"></el-table-column>
         </el-table>
-        <el-button type="primary" @click="getData({ id: 7 })">get data</el-button>
+        <fixed-table
+            :tableData="resData"
+            :tableHeight="resHeight"
+            :tableBorder="resBd"
+            @overview="overview"
+            @edit="edit"
+        ></fixed-table>
+        <table-pagination
+            class="tablePagination"
+            :currentPage="currentPage"
+            :pageSize="pageSize"
+            :total="total"
+            :pageGap="pageGap"
+            :layoutFunction="layoutFunction"
+        ></table-pagination>
+        <el-button type="primary" @click="getData({ id: 7 })" style="margin-top: 20px">get data</el-button>
         <el-button type="primary" @click="postData({ id: 7 })">send data</el-button>
         <el-button type="primary" @click="testPromise({ id: 7 })">test data</el-button>
         <el-button type="primary" @click="thenTest({ id: 7 })">test then</el-button>
@@ -14,10 +29,59 @@
 
 <script>
 import { testGetData, testPostData } from '@/api/table'
+import FixedTable from '../../components/FixedTable'
+import TablePagination from '../../components/TablePagination'
 export default {
     name: 'Table',
+    components: { FixedTable, TablePagination },
     data() {
-        return {}
+        TablePagination
+        return {
+            resData: [
+                {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-08',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-06',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2016-05-07',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+            ],
+            resHeight: '400',
+            resBd: false,
+            currentPage: 1,
+            pageSize: 10,
+            total: 1001,
+            pageGap: [10, 20, 30, 40, 50],
+            layoutFunction: 'total, sizes, prev, pager, next, jumper',
+        }
     },
     methods: {
         getData(val) {
@@ -93,6 +157,14 @@ export default {
                 resolve('third' + val)
             })
         },
+        overview(val) {
+            console.log('查看数据')
+            console.log(val)
+        },
+        edit(val) {
+            console.log('编辑数据')
+            console.log(val)
+        },
     },
     created() {
         this.queryNum()
@@ -106,5 +178,9 @@ export default {
 .table_view {
     height: 200px;
     width: 100%;
+    .tablePagination {
+        text-align: right;
+        margin-top: 10px;
+    }
 }
 </style>

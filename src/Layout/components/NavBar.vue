@@ -1,5 +1,6 @@
 <template>
     <div class="navbar clearfix">
+        <span class="icon iconfont icon-hamburger" @click="toggleSideBar" :class="{'is-active': sideBarOpen}"></span>
         <el-breadcrumb class="bottom_bread" separator="/">
             <el-breadcrumb-item v-for="(item, index) in breadList" :key="index">
                 <span>
@@ -8,13 +9,7 @@
             </el-breadcrumb-item>
         </el-breadcrumb>
         <div class="avatar">
-            <el-avatar
-                shape="square"
-                :size="34"
-                fit="contain"
-                :src="url"
-            >
-            </el-avatar>
+            <el-avatar shape="square" :size="34" fit="contain" :src="url"> </el-avatar>
             <el-dropdown>
                 <i class="dropDownIcon el-icon-caret-bottom"></i>
                 <el-dropdown-menu slot="dropdown">
@@ -28,13 +23,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'NavBar',
     data() {
         return {
             breadList: [{ path: '/homepage/index', meta: { title: 'Dashboard' } }],
-            url: ''
+            url: '',
         }
+    },
+    computed: {
+        ...mapState(['sideBarOpen'])
     },
     watch: {
         $route(route) {
@@ -64,6 +63,9 @@ export default {
             this.$store.dispatch('logout')
             this.$router.push('/login')
         },
+        toggleSideBar() {
+            this.$store.dispatch('setSideBarStatus')
+        }
     },
 }
 </script>
@@ -75,7 +77,21 @@ export default {
     height: 50px;
     padding: 0 10px;
     box-shadow: 0 1px 2px rgba(128, 128, 128, 0.1);
-
+    .icon-hamburger {
+        float: left;
+        font-size: 22px;
+        font-weight: bold;
+        height: 50px;
+        line-height: 50px;
+        margin-right: 15px;
+        cursor: pointer;
+        transform: rotate(0);
+        transition: width .15s ease;
+    }
+    .icon-hamburger.is-active {
+        transform: rotate(180deg);
+        transition: width .15s ease;
+    }
     .bottom_bread {
         height: 50px;
         line-height: 50px;

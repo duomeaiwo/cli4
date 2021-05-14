@@ -3,7 +3,7 @@
         <!-- <el-button @click="jumpto('/table/index')" type="primary">table</el-button> -->
         <!-- <el-button @click="jumpto('/')" type="primary">homepage</el-button> -->
         <side-bar class="side_container"></side-bar>
-        <div class="main_container">
+        <div class="main_container" :class="{'hideSideBar': !sideBarOpen}">
             <nav-bar></nav-bar>
             <bread-bar></bread-bar>
             <app-main></app-main>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { NavBar, AppMain, SideBar, BreadBar } from './components'
 export default {
     name: 'Layout',
@@ -26,7 +27,13 @@ export default {
             this.$router.push(val)
         },
     },
-    created() {},
+    computed: {
+        ...mapState(['sideBarOpen'])
+    },
+    watch: {},
+    created() {
+        console.log(this.sideBarOpen);
+    },
 }
 </script>
 
@@ -36,7 +43,6 @@ export default {
     position: relative;
     height: 100%;
     .side_container {
-        width: 210px !important;
         height: 100%;
         position: fixed;
         left: 0;
@@ -45,8 +51,15 @@ export default {
     }
     .main_container {
         position: relative;
-        margin-left: 210px;
         min-height: 100%;
+        width: calc(100% - 210px);
+        left: 210px;
+        // transition: all 0.15s;
+    }
+    .main_container.hideSideBar{
+        width: calc(100% - 64px);
+        left: 64px;
+        // transition: all 0.15s;
     }
 }
 </style>

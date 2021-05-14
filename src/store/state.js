@@ -5,6 +5,8 @@ const state = {
     age: 0,
     department: '',
     token: '',
-    avatar: ''
+    avatar: '',
+    sideBarOpen: true,      //侧边栏打开
+    sideBarStatus: 1        //1为打开，0为关闭
 }
 export default state

@@ -16,6 +16,14 @@ const mutations = {
     },
     setUsername(state, v) {
         state.username = v
-    }
+    },
+    setSideBar(state) {
+        state.sideBarOpen = !state.sideBarOpen
+        if (state.sideBarOpen) {
+            state.sideBarStatus = 1
+        } else {
+            state.sideBarStatus = 0
+        }
+    },
 }
 export default mutations

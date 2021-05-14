@@ -58,5 +58,8 @@ const actions = {
             resolve()
         })
     },
+    setSideBarStatus({ commit }) {
+        commit('setSideBar')
+    },
 }
 export default actions
