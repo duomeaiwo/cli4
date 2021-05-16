@@ -72,6 +72,20 @@ const routes = [
             },
         ],
     },
+    {
+        path: '/carousel',
+        component: Layout,
+        redirect: '/carousel/index',
+        meta: { title: 'Carousel', icon: 'el-icon-document' },
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/carousel/index'),
+                name: 'Carousel',
+                meta: { title: 'Carousel', icon: 'el-icon-document' },
+            },
+        ],
+    },
 ]
 
 const router = new VueRouter({

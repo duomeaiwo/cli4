@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+</html>
+<script>
+	class Father {
+		constructor() {
+			this.name = 'Father'
+			this.age = 60
+		}
+		say() {
+            this.name = 'xxx'
+			console.log(this.name + ' say')
+		}
+	}
+	class Child extends Father {
+		constructor() {
+			super()
+			this.name = 'Child'
+			this.age = 29
+		}
+		hello() {
+			console.log(this.name)
+		}
+	}
+    let a = new Child()
+    let b = new Father()
+    a.say()
+    a.hello()
+    b.say()
+    console.log(a);
+    console.log(b);
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+</html>
+<script>
+	var obj = {
+		name: 'aa',
+		status: {
+			age: 19,
+		},
+		data: ['asd', 1, { gender: 'male' }],
+	}
+	let obj1 = {}
+	// Object.assign(obj1, obj)
+
+	function deep(newVal, oldVal) {
+		for (var k in oldVal) {
+			let item = oldVal[k]
+			if (item instanceof Array) {
+				newVal[k] = []
+				deep(newVal[k], item)
+			} else if (item instanceof Object) {
+				newVal[k] = {}
+				deep(newVal[k], item)
+			} else {
+				newVal[k] = item
+			}
+		}
+	}
+	function deepClone1(obj) {
+		//判断拷贝的要进行深拷贝的是数组还是对象，是数组的话进行数组拷贝，对象的话进行对象拷贝
+		var objClone = Array.isArray(obj) ? [] : {}
+		//进行深拷贝的不能为空，并且是对象或者是
+		if (obj && typeof obj === 'object') {
+			for (key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					if (obj[key] && typeof obj[key] === 'object') {
+						objClone[key] = deepClone1(obj[key])
+					} else {
+						objClone[key] = obj[key]
+					}
+				}
+			}
+		}
+		return objClone
+	}
+
+	function isArray(val) {
+		return Object.prototype.toString.call(val)
+	}
+
+	function deepClone(oldObj, newObj) {
+		for (var k in oldObj) {
+			let item = oldObj[k]
+			if (isArray(item) === '[object Array]') {
+				newObj[k] = []
+				deepClone(item, newObj[k])
+			} else if (isArray(item) === '[object Object]') {
+				newObj[k] = {}
+				deepClone(item, newObj[k])
+			} else {
+				newObj[k] = item
+			}
+		}
+	}
+
+	// this.deep(obj1, obj)
+	this.deepClone(obj, obj1)
+	this.obj.name = 'bbb'
+	this.obj.data[2] = 3333
+	this.obj.status.age = 30
+	console.log(obj)
+	console.log(obj1)
+</script>
