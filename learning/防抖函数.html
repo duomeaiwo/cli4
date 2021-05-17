@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" id="ipt" />
+	</body>
+</html>
+<script>
+	function debounce(fn,delay) {
+		let timer
+		return function(args) {
+			clearInterval(timer)
+			timer = setTimeout(() => {
+				fn(args)
+			}, delay);
+		}
+	}
+
+	function axios(e) {
+		console.log(e)
+	}
+
+	let a = debounce(axios, 1000)
+
+
+	const ipt = document.getElementById('ipt')
+	ipt.addEventListener('keyup', function(e) {
+		a(e.target.value)
+	})
+</script>

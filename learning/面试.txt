@@ -69,7 +69,10 @@ http/https
 http 1. 通信使用明文，若被抓包，则直接被窃取信息 
 2. 不验证与自身通信者的身份，有可能遭到伪装
 3. 无法证明报文是否被篡改
-https 是由http+SSL
+https 需要用到ca申请证书，需要一定费用
+http是超文本传输协议，信息明文传输，https是ssl加密传输协议
+http和https连接方式不同，前者80端口后者443
+http连接简单无状态 https是ssl+http协议构建的可进行加密传输，身份认证的网络协议
 
 
 
@@ -190,3 +193,16 @@ h5新增元素 header footer nav section aside
 canvas绘图
 本地离线存储 manifest文件
 css3 border-radius box-shadow tranfrom animation
+字符串方面 includes() startsWith() endsWith()
+字符串模板`<span>${title}</span>`
+
+
+
+Object.is(+0,-0)
+false
++0 === -0
+true
+Object.is(NaN,NaN)
+true
+NaN === NaN
+false
