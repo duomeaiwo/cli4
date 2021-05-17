@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="text" id="ipt" />
+    </body>
+</html>
+<script>
+    /*
+    
+    vue中将timer定义在data中即可
+    
+    */
+
+    // function debounce(fun, delay) {
+    //     // let timer
+    //     return function(args) {
+    //         let that = this
+    //         let _args = args
+    //         clearTimeout(fun.id)
+    //         fun.id = setTimeout(function() {
+    //             fun.call(that, _args)
+    //         },delay)
+    //     }
+    // }
+    // function axios(content) {
+    //     console.log('发送请求:   ' + content);
+    // }
+    // let debounceAxios = debounce(axios, 1000)
+
+    // function debounce(fn, delay) {
+    //     let timer
+    //     return function(args) {
+    //         clearTimeout(timer)
+    //         let _args = args
+    //         let that = this
+    //         timer = setTimeout(function() {
+    //             // fn.call(that, _args)
+    //             fn(args)
+    //         }, delay)
+    //     }
+    // }
+
+    // let debounceAxios = debounce(axios, 1000)
+    // function axios(e) {
+    //     console.log('send: ' + e)
+    // }
+
+    // function debounce(fn, delay) {
+    //     let _t = delay || 500
+    //     let timer
+    //     return function(args) {
+    //         clearTimeout(timer)
+    //         let that = this
+    //         let _arg = args
+    //         timer = setTimeout(function() {
+    //             fn.call(that, _arg)
+    //         }, _t)
+    //     }
+    // }
+
+    // var a = debounce(b, 1000)
+    // function b(e) {
+    //     console.log(e)
+    // }
+
+    function deb(fn, delay) {
+        let timer 
+        return function(args) {
+            clearTimeout(timer)
+            let that = this
+            let _arg = args
+            timer = setTimeout(function() {
+                fn.call(that, _arg)
+            },delay)
+        }
+    }
+    function act(e) {
+        console.log(e);
+        console.log(this);
+    }
+    let a = deb(act,1000)
+
+
+    let ipt = document.getElementById('ipt')
+    ipt.addEventListener('keyup', function(e) {
+        // debounceAxios(e.target.value)
+        // debounce(axios(e.target.value), 1000)
+        // a(e.target.value)
+        a(e.target.value)
+    })
+</script>

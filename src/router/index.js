@@ -70,6 +70,12 @@ const routes = [
                 name: 'Mode1-2',
                 meta: { title: 'Mode1-2', icon: 'el-icon-location' },
             },
+            {
+                path: 'mode1-3',
+                component: () => import('@/views/mode/mode1_3'),
+                name: 'Mode1-3',
+                meta: { title: 'Mode1-3', icon: 'el-icon-location' },
+            },
         ],
     },
     {

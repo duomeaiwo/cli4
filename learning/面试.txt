@@ -11,7 +11,12 @@ html运行机制
 6.渲染DOM树，然后构建CSSOM树，布局渲染树，绘制渲染树。
 btyes => character => token => nodes => DOM
 
-
+DNS 解析
+TCP 连接
+发送 HTTP 请求
+服务器处理请求并返回 HTTP 报文
+浏览器解析渲染页面
+连接结束
 
 
 
@@ -64,6 +69,7 @@ http/https
 http 1. 通信使用明文，若被抓包，则直接被窃取信息 
 2. 不验证与自身通信者的身份，有可能遭到伪装
 3. 无法证明报文是否被篡改
+https 是由http+SSL
 
 
 
@@ -154,7 +160,8 @@ Array.isArray()
 
 
 
-
+函数防抖
+防抖：在事件触发n秒后进行回调，如果在n秒内再次触发，则重新计时
 
 
 
@@ -166,3 +173,20 @@ Array.isArray()
 
 手写一个Promise
 深拷贝 
+
+
+vue生命周期 响应式原理 数据双向绑定原理
+
+
+
+
+
+
+
+
+
+h5新增元素 header footer nav section aside
+存储方面 localStorage sessionStorage 
+canvas绘图
+本地离线存储 manifest文件
+css3 border-radius box-shadow tranfrom animation

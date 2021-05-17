@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn">点击</button>
+    </body>
+</html>
+<script>
+    var btn = document.getElementById('btn')
+
+    // function throttle(fn, delay) {
+    //     let timer
+    //     return function() {
+    //         if (!timer) {
+    //             timer = setTimeout(function() {
+    //                 timer = null
+    //                 fn()
+    //             }, delay)
+    //         }
+    //     }
+    // }
+
+    function throttle(fn, t) {
+        let last
+        let timer
+        const interval = t || 500
+        return function() {
+            const args = arguments
+            const now = +new Date()
+            if (last && now - last < interval) {
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    last = now
+                    fn.apply(this, args)
+                }, interval)
+            } else {
+                last = now
+                fn.apply(this, args)
+            }
+        }
+    }
+
+    function handle(e) {
+        console.log(Math.random())
+        // console.log(300)
+    }
+    let a = throttle(handle, 1000)
+    btn.addEventListener('click', a)
+</script>

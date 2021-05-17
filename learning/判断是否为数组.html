@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body></body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 0px;
+                height: 0px;
+                border-top: 10px solid red;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid transparent;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+    </body>
 </html>
 <script>
-	var arr = [1, 2, 3, 1]
-	var arr1 = { abac: 1, abc: 2 }
-	// function test(val) {
-	//     console.log( Object.prototype.toString.call(val) == '[object Array]');
-	//     return Object.prototype.toString.call(val) == '[object Array]'
-	// }
+    var arr = [1, 2, 3, 1]
+    var arr1 = { abac: 1, abc: 2 }
+    // function test(val) {
+    //     console.log( Object.prototype.toString.call(val) == '[object Array]');
+    //     return Object.prototype.toString.call(val) == '[object Array]'
+    // }
 
-	// function test(val) {
-	// 	console.log(Array.isArray(val))
-	// }
+    // function test(val) {
+    // 	console.log(Array.isArray(val))
+    // }
 
-	// function isArrayFn(value) {
-	// 	if (typeof Array.isArray === 'function') {
-	// 		return Array.isArray(value)
-	// 	} else {
-	// 		return Object.prototype.toString.call(value) === '[object Array]'
-	// 	}
-	// }
+    // function isArrayFn(value) {
+    // 	if (typeof Array.isArray === 'function') {
+    // 		return Array.isArray(value)
+    // 	} else {
+    // 		return Object.prototype.toString.call(value) === '[object Array]'
+    // 	}
+    // }
 
-	// function test(val) {
-	//     console.log(val instanceof Array)
-	// }
-	console.log(Object.prototype.toString.call(arr))
-	console.log(Object.prototype.toString.call(arr1))
+    // function test(val) {
+    //     console.log(val instanceof Array)
+    // }
+    console.log(Object.prototype.toString.call(arr))
+    console.log(Object.prototype.toString.call(arr1))
 
-	function f1() {
-		var n = 999
-		return function f2() {
-			n++
-			console.log(n)
-		}
-	}
-	var a = f1()
-	a()
+    function f1() {
+        var n = 999
+        return function() {
+            n++
+            console.log(n)
+        }
+    }
+    var a = f1()
+    a()
 </script>

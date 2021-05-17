@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+</html>
+<script>
+    // var p = {
+    //     fn: function(args) {
+    //         console.log(this.first+this.second+args[0]+args[1]);
+    //         return this.first+this.second
+    //     }
+    // }
+    // var p2 = {
+    //     first: 10,
+    //     second: '?'
+    // }
+    // p.fn.call(p2,['call','=ten'])
+    var name = 'a '
+    var p = {
+        name: 'bb',
+        fn: function(e) {
+            name: 'cc'
+            console.log(this)
+        },
+    }
+    var p2 = function(e) {
+        // console.log('p2')
+    }
+    var p3 = {
+        name: 'p3'
+    }
+    p.fn.call(p2)
+</script>
