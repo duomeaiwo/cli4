@@ -19,6 +19,8 @@
             :total="total"
             :pageGap="pageGap"
             :layoutFunction="layoutFunction"
+            @handleSizeChange="handleSizeChange"
+            @handleCurrentChange="handleCurrentChange"
         ></table-pagination>
         <el-button type="primary" @click="getData({ id: 7 })" style="margin-top: 20px">get data</el-button>
         <el-button type="primary" @click="postData({ id: 7 })">send data</el-button>
@@ -26,7 +28,7 @@
         <el-button type="primary" @click="thenTest({ id: 7 })">test then</el-button>
         <el-button type="primary" @click="thenThrottle()">throttle</el-button>
         <el-input
-			id="ipt"
+            id="ipt"
             v-model="debounceData"
             style="width: 400px;margin-left: 10px"
             placeholder="'debounce'"
@@ -203,13 +205,33 @@ export default {
             console.log('编辑数据')
             console.log(val)
         },
+        handleCurrentChange(val) {
+            this.currentPage = val
+            this.resData = []
+        },
+        handleSizeChange(val) {
+            this.pageSize = val
+            this.currentPage = 1
+            this.resData = [
+                {
+                    date: '2222-05-03',
+                    name: 'xiaowang',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+                {
+                    date: '2222-05-02',
+                    name: 'xiaowang',
+                    address: '上海市普陀区金沙江路 1518 弄',
+                },
+            ]
+        },
     },
     created() {
         this.queryNum()
     },
     mounted() {
-		document.getElementById('ipt').addEventListener('keyup',this.debounce(this.getData11,1000))
-	},
+        document.getElementById('ipt').addEventListener('keyup', this.debounce(this.getData11, 1000))
+    },
 }
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+<div>
     <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -9,6 +10,7 @@
         :total="total"
     >
     </el-pagination>
+    </div>
 </template>
 
 <script>
@@ -36,6 +38,17 @@ export default {
             default: 'total, sizes, prev, pager, next, jumper',
         },
     },
+    watch:{
+        currentPage(newV, oldV) {
+            this.currentPage = newV
+        },
+        pageSize(newV, oldV) {
+            this.pageSize = newV
+        },
+        pageSize(newV, oldV) {
+            this.pageSize = newV
+        }
+    },
     data() {
         return {}
     },
@@ -43,12 +56,11 @@ export default {
     created() {},
     mounted() {},
     methods: {
-        handleSizeChange(val) {
-            this.currentPage = 1
-            this.$emit('handleSizeChange', val)
+        handleSizeChange(pageSize) {
+            this.$emit('handleSizeChange', pageSize)
         },
-        handleCurrentChange(val) {
-            this.$emit('handleCurrentChange', val)
+        handleCurrentChange(currentPage) {
+            this.$emit('handleCurrentChange', currentPage)
         },
     },
 }

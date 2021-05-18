@@ -82,7 +82,7 @@ http连接简单无状态 https是ssl+http协议构建的可进行加密传输�
 
 数组去重
 let arr = [1,3,3,5,'asd',12,2,1]
-let arr2 = [...new Set(arr)]
+let arr2 = [...new Set(arr)] || Array.form(new set(arr))
 let arr3 = arr.filter((item,index,arr) => {
     return  arr.indexOf(item, 0) === index 
 })
@@ -179,7 +179,14 @@ Array.isArray()
 
 
 vue生命周期 响应式原理 数据双向绑定原理
+P129
 
+
+
+
+
+
+BFC flex布局
 
 
 
