@@ -174,8 +174,8 @@ Array.isArray()
 
 
 
-手写一个Promise
-深拷贝 
+Promise 及其api
+深拷贝 手写
 
 
 vue生命周期 响应式原理 数据双向绑定原理
@@ -214,3 +214,11 @@ Object.is(NaN,NaN)
 true
 NaN === NaN
 false
+
+
+
+
+
+
+mockjs 
+json5   文件后缀名改为json5
