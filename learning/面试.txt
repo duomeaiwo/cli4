@@ -180,7 +180,9 @@ Array.isArray()
 
 vue生命周期 响应式原理 数据双向绑定原理
 P129
-
+Object.defineProperty
+vue再初始化数据initdata方法时，会给data中的属性使用Object.defineProperty重新定义所有属性
+当页面去到对应属性时，会进行依赖收集（收集当前组件的wather），如果属性发生变化会通知相关依赖更新操作
 
 
 
