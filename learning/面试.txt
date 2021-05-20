@@ -174,8 +174,8 @@ Array.isArray()
 
 
 
-手写一个Promise
-深拷贝 
+Promise 及其api
+深拷贝 手写
 
 
 vue生命周期 响应式原理 数据双向绑定原理
@@ -189,6 +189,7 @@ vue再初始化数据initdata方法时，会给data中的属性使用Object.defi
 
 
 BFC flex布局
+BFC可以理解为元素的一个属性，被BFC包裹着的元素不会脱离文档流，可以用来避免外边距合并，清除浮动
 
 
 
@@ -215,3 +216,11 @@ Object.is(NaN,NaN)
 true
 NaN === NaN
 false
+
+
+
+
+
+
+mockjs 
+json5   文件后缀名改为json5
