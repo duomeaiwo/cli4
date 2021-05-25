@@ -190,7 +190,7 @@ vue再初始化数据initdata方法时，会给data中的属性使用Object.defi
 
 BFC flex布局
 BFC可以理解为元素的一个属性，被BFC包裹着的元素不会脱离文档流，可以用来避免外边距合并，清除浮动
-
+浮动 绝对定位absolute fixed  overflow不是visible
 
 
 
@@ -224,3 +224,21 @@ false
 
 mockjs 
 json5   文件后缀名改为json5
+
+
+
+
+
+
+
+嵌套路由中子路由不加'/'
+vue路由scrollBahvior可以记录浏览器的位置
+
+
+
+
+
+微任务执行时机比宏任务早
+微任务 Promise async/await
+宏任务 dom渲染 setTimeout ajax请求
+微任务 > dom渲染 > 宏任务

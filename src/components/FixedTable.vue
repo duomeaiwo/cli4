@@ -65,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
-.dashboard {
+.fixedTable {
 	height: 100%;
 }
 </style>

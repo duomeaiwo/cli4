@@ -68,7 +68,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/style/variables.scss';
-.dashboard {
+.tablePagination {
     height: 100%;
 }
 </style>

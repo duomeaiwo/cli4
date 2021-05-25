@@ -25,5 +25,8 @@ const mutations = {
             state.sideBarStatus = 0
         }
     },
+    setPermission(state,v) {
+        state.btnPermission = v
+    }
 }
 export default mutations

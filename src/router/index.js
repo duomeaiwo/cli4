@@ -92,10 +92,30 @@ const routes = [
             },
         ],
     },
+    {
+        path: '/btnPermission',
+        component: Layout,
+        redirect: '/btnPermission/index',
+        meta: { title: 'BtnPermission', icon: 'el-icon-document' },
+        children: [
+            {
+                path: 'index',
+                component: () => import('@/views/btnPermission/index'),
+                name: 'BtnPermission',
+                meta: { title: 'btnPermission', icon: 'el-icon-document' },
+            },
+        ],
+    },
 ]
 
 const router = new VueRouter({
     routes,
+    scrollBehavior (to, from, savedPosition) {
+        if(savedPosition) {
+            return savedPosition
+        }else{
+        }
+    }
 })
 
 export default router

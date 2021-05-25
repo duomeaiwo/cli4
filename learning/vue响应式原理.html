@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <input type="text" id="ipt">
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const oldArrayProto = Array.prototype
+    const newArrayProto = Object.create(oldArrayProto);
+    ['push', 'pop', 'splice'].forEach(methodName => {
+        newArrayProto[methodName] = function() {
+            oldArrayProto[methodName].call(this, ...arguments)
+        }
+    })
+    // console.log(oldArrayProto);
+    // console.log(newArrayProto);
+
+    let data = {
+        name: 'xxx',
+        age: 20,
+        // list: [1,2,3,4],
+        friend: {
+            friendName: 'bbb'
+        }
+    }
+    observer(data)
+
+    // 如果target中有对象或者数组
+
+    function observer(target) {
+        console.log('target');
+        console.log(target);
+        console.log('target');
+        if( typeof target !== 'object' || target === null) {
+            return target
+        } 
+        if( Array.isArray(target)) {
+            target.__proto__ = newArrayProto
+        }
+        for (let key in target) {
+            defineReactive(target, key, target[key])
+        }
+    }
+    function defineReactive(target, key, value) {
+        console.log(target);
+        observer(value) 
+        Object.defineProperty(target, key, {
+            get: () => {
+                return value
+            },
+            set: (newVal) => {
+                observer(newVal) 
+                if(newVal !== value) {
+                    value = newVal
+                    console.log('调用dep.notify更新视图');
+                }
+            },
+        })
+    }
+    // data.friend.friendName = 'ss'
+    // vue3 Proxy 只有在使用时才会调用，vue2进来就会深度监听，添加/删除属性不会更新，要使用Vue.delete Vue.set
+</script>

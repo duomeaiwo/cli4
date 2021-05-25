@@ -1,5 +1,5 @@
 // 所有异步操作，需要更改到state中数据时
-import { login, logout, getInfo } from '@/api/user'
+import { login, logout, getInfo, getPermission } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/util/auth'
 import { Message } from 'element-ui'
 import state from './state'
@@ -61,5 +61,15 @@ const actions = {
     setSideBarStatus({ commit }) {
         commit('setSideBar')
     },
+    getPermission({commit}, data) {
+        // getPermission(data).then(res => {
+            let res = {
+                edit: false,
+                add: true,
+                delete: true
+            }
+            commit('setPermission', res)
+        // })
+    }
 }
 export default actions

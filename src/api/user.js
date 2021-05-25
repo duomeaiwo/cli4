@@ -23,3 +23,11 @@ export function getInfo(token) {
         token
     })
 }
+
+export function getPermission(data) {
+    return request({
+        url: '/getPermission',
+        method: 'get',
+        data
+    })
+}
