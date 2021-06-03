@@ -64,7 +64,7 @@ const actions = {
     getPermission({commit}, data) {
         // getPermission(data).then(res => {
             let res = {
-                edit: false,
+                edit: true,
                 add: true,
                 delete: true
             }
