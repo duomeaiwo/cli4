@@ -17,9 +17,9 @@ Vue.use(ElementUI);
 Vue.use(SuperFlow)
 Vue.config.productionTip = false
 
-// if(process.env.NODE_ENV == 'development'){
-//   require('./mock/index')
-// }
+if(process.env.MOCK == true){
+  require('./mock/index')
+}
 
 new Vue({
   router,
